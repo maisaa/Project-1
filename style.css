@@ -1,0 +1,30 @@
+body{
+    background-color: rgba(157, 94, 177, 0.75);
+}
+
+#MainStage{
+    padding-top: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+#first{
+    float: left;
+    width: 25%;
+    height: 200px;
+    border: solid 5px;
+    padding-top: 50px;
+    padding-left: 30px;
+    padding-bottom: 20px;
+    margin-top: 75px;
+    background-color: saddlebrown;
+}
+
+#sec{
+    float: right;
+    width: 65%;
+    height: 600px;
+    border: solid 5px;
+    background-color: salmon;
+}
