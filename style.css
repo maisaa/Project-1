@@ -27,6 +27,7 @@ h1{
     width: 25%;
     height: 600px;
     border: solid 5px;
+    border-radius: 10px;
     padding-left: 50px;
     padding-bottom: 20px;
     margin-top: 20px;
@@ -39,6 +40,7 @@ h1{
     width: 600px;
     height: 600px;
     border: solid 5px;
+    border-radius: 10px;
     padding-bottom: 20px;
     margin-top: 20px;
     margin-bottom: 50px;
@@ -54,4 +56,21 @@ img {
     margin-left: 20px;
     margin-bottom: 20px;
     border-radius: 20px;
+}
+
+button{
+    
+    position: relative;
+    top: 100%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #f1f1f1;
+    color: black;
+    font-size: 16px;
+    padding: 16px 30px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
 }
