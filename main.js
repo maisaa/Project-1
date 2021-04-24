@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cardArr = [
         {
             image: 'abu',
-            src: 'images/abu.jpj'
+            src: 'images/abu.jpg'
         },
         {
             image: 'aladdin',
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             image: 'abu',
-            src: 'images/abu.jpj'
+            src: 'images/abu.jpg'
         },
         {
             image: 'aladdin',
@@ -81,16 +81,37 @@ let checkedCardId = []
 // crate the game stage
 
 function crateGameStage() {
-    cardArr.forEach(element => {
+    cardArr.forEach( (el , i) => {
         let card = document.createElement('img')
         card.src = 'images/genie.png'
         card.height = 150
         card.width = 150
-        card.id = element
-        game.append(card)
+        card.id = i
+        // console.log("i = ",i)
+        game.appendChild(card)
+        card.onclick = flipCrd
     });
+    console.log("function crateGameStage")
 }
-// console.log("hi main.js")
+// now function to flip the cards
+// console.log("this :" ,this)
+function flipCrd(){
+    // console.log("flip function")
+    let cardId = this.getAttribute('id')
+    // console.log("cardId= ",cardId)
+    checkedCards.push(cardArr[cardId].image)
+    checkedCardId.push(cardId)
+    console.log("cardArr[cardId].image=",cardArr[cardId].src)
+    // this.src = cardArr[cardId].image
+    this.setAttribute('src',cardArr[cardId].src )
+    // console.log("this.src",this.src)
+    // console.log("checkedCards",checkedCards)
+    // console.log("checkedCardId",checkedCardId);
+    // if checkedCards have two element and they match correctly then let them locked
+    
+
+}
+
 crateGameStage()
 })
 

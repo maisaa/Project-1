@@ -71,10 +71,10 @@ footer{
 
 
 @media (max-width: 600px){
-    #sec {
+    #game {
         grid-template-columns: repeat(2, auto);
     }
-    header {
+    #title {
         flex-direction: column;
         align-items: center;
     }
