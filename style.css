@@ -1,76 +1,81 @@
+*{
+    padding:0;
+    margin: 0;
+    box-sizing: border-box;
+
+}
+
 html { 
-    background: url(./images/backgraund.jpg) no-repeat center center fixed; 
+    background: url(./images/sanddune.jpg) no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-  }
-
-body{
-    /* background-color: rgba(157, 94, 177, 0.75); */
 }
-h1{
+
+#title{
+    color: khaki;
     text-align: center;
-    margin-top: 5vh;
-    
+    font-size: 2em;
 }
 
-#MainStage{
-    padding-top: 5px;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 20px;
+.game-container{
+    position: relative;
+    padding-top: 5%;
+    padding-left: 5%;
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr;
+    grid-gap: 4em;
 }
 
-#first{
-    float: left;
-    width: 25%;
-    height: 600px;
-    border: solid 5px;
-    border-radius: 10px;
-    padding-left: 50px;
-    padding-bottom: 20px;
-    margin-top: 20px;
-    margin-bottom: 50px;
-    background-color: rgba(139, 69, 19,0.90);
+.game-info{
+    grid-row: 2fr;
+    display: flex;
+    justify-content: space-between; 
+    padding-right: 10%;
 }
 
-#sec{
-    float: right;
-    width: 600px;
-    height: 600px;
-    border: solid 5px;
-    border-radius: 10px;
-    padding-bottom: 20px;
-    margin-top: 20px;
-    margin-bottom: 50px;
-    background-color:rgb(250, 128, 114,0.90);
+.info{
+    color: khaki;
+    font-size: 2em;
 }
+
+
+#game{ 
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(4, auto);
+    grid-gap: 0.4em;
+    /* display: flex;
+    flex-wrap: wrap;
+    margin: 120px auto; */
+}
+
 
 img {
-    height: 155px;
-    width: 155px;
-    grid-area: 10px;
-    margin-top: 20px;
-    margin-right: 20px;
-    margin-left: 20px;
-    margin-bottom: 20px;
-    border-radius: 20px;
+    height: 150px;
+    width: 150px;
+    border-radius: 20px ;
 }
 
-button{
-    
-    position: relative;
-    top: 100%;
-    left: 30%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    background-color: #f1f1f1;
-    color: black;
-    font-size: 16px;
-    padding: 16px 30px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
+footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(88, 11, 11,0.25);
+    color: khaki;
     text-align: center;
+}
+
+
+@media (max-width: 600px){
+    #sec {
+        grid-template-columns: repeat(2, auto);
+    }
+    header {
+        flex-direction: column;
+        align-items: center;
+    }
 }

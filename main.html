@@ -1,44 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Memory Card Game</title>
-    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+  </head>
+  <body>
+    <header id="title">
+      <h1>Memory Card Game</h1>
+    </header>
 
-</head>
-<body >
-    <h1>Memory Card Game</h1>
-    
-    <div id="MainStage">
-
-    <!-- First div for the user name and score and button play  -->
-    <div id="first">
-        <div id="info">
-        <h2>Name :</h2>
-        <h2>Time :</h2>
-        <h2>Score :</h2>
-        <button>Play</button>
-        </div>
+    <div class="game-container">
+      <!-- First div for the user name and score and button play  -->
+      <div class="game-info">
+        <div class="info">Time : <span id="timer">100</span></div>
+        <div class="info">Moves : <span id="moves">0</span></div>
         
-    </div>
-    <!-- sec div for the play stage -->
-        <div id="sec">
-            <div id="cards">
-             <img src="./images/Abu1.jpg">
-             <img src="./images/Abu1.jpg">
-             <img src="./images/aladdin.png">
-             <img src="./images/genie.png">
-             <img src="./images/jasmine.jpg">
-             <img src="./images/jasmine.jpg">
-             <img src="./images/retu.jpg">
-             <img src="./images/aladdin.png">
-             <img src="./images/retu.jpg">
-            </div>
-        </div>
-    
+      </div>
+      <!-- sec div for the play stage -->
+      <div id="game">
+        <img src="./images/abu.jpg" />
+        <img src="./images/abu.jpg" />
+        <img src="./images/aladdin.png" />
+        <img src="./images/aladdin.png" />
+        <img src="./images/genie1.jpg" />
+        <img src="./images/genie1.jpg" />
+        <img src="./images/j4.jpg" />
+        <img src="./images/j4.jpg" />
+        <img src="./images/retu.jpg" />
+        <img src="./images/retu.jpg" />
+        <img src="./images/Carpet.jpg" />
+        <img src="./images/Carpet.jpg" />
+        <img src="./images/sultan.jpg" />
+        <img src="./images/sultan.jpg" />
+        <img src="./images/jafar.jpg" />
+        <img src="./images/jafar.jpg" />
+      </div>
     </div>
 
-</body>
+    <footer>maisaa.alkhedr 2021</footer>
+
+    <script src="./main.js"></script>
+  </body>
 </html>
