@@ -2,7 +2,7 @@
 //     console.log('DOM fully loaded and parsed');
 // });
 
-document.addEventListener('DOMContentloaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     const cardArr = [
         {
             image: 'abu',
@@ -72,11 +72,27 @@ document.addEventListener('DOMContentloaded', () => {
 
 // add here new variables and functions
 
+const game = document.querySelector('#game')
+
 // add two arrays  one for checked Cards and the second one for won Cards 
+const cardsWon = []
+let checkedCards = []
+let checkedCardId = []
+// crate the game stage
 
-//
-
+function crateGameStage() {
+    cardArr.forEach(element => {
+        let card = document.createElement('img')
+        card.src = 'images/genie.png'
+        card.height = 150
+        card.width = 150
+        card.id = element
+        game.append(card)
+    });
+}
+// console.log("hi main.js")
+crateGameStage()
 })
 
-// console.log("hi main.js")
+console.log("hi main.js")
 
