@@ -6,6 +6,7 @@
 }
 
 html { 
+    min-height: 100vh;
     background: url(./images/sanddune.jpg) no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -43,10 +44,12 @@ html {
 
 
 #game{ 
+    /* position: relative; */
     display: grid;
-    width: 1%;
+    /* width: 1%; */
     grid-template-columns: repeat(4, auto);
-    grid-gap: 0.4em;
+    grid-gap: 2em;
+    justify-content: center ;
     /* display: flex;
     flex-wrap: wrap;
     margin: 120px auto; */
@@ -58,6 +61,7 @@ img {
     width: 150px;
     grid-area: auto;
     border-radius: 20px ;
+    margin: auto;
 }
 
 footer{

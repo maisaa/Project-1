@@ -73,6 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // add here new variables and functions
 let moves = document.querySelector('#moves')
 let timer = document.querySelector('#timer')
+let score = document.querySelector('#score')
 const game = document.querySelector('#game')
 
 // add two arrays  one for checked Cards and the second one for won Cards 
@@ -93,17 +94,24 @@ function crateGameStage() {
     });
     //count player moves ++1 foreach click
     moves.innerHTML = 0;
-    timer.innerHTML = downloadTimer;
+    timer.innerHTML = 100;
     
 }
-
-let downloadTimer = setInterval(function(){
-    if(timer.innerHTML <= 0){
-        clearInterval(downloadTimer);
+//timer 
+let time = 100
+const downlodeTimer = setInterval(() => {
+    if(time === 0 ){
+        clearInterval(downlodeTimer);
+        return timer.innerHTML ="Game Over"
+        
+    }else {
+        time = time
     }
-    document.getElementById("timer").value = 100 - timer.innerHTML;
-    timer.innerHTML =Number(timer.innerHTML)- 1;
-}, 10000);
+    time--;
+    timer.innerHTML = time +' sec'
+}, 1000);
+
+
 // now function to flip the cards
 function flipCard(){
     let cardId = this.getAttribute('id')
@@ -118,7 +126,7 @@ function flipCard(){
     // if checkedCards have two element then call isMatch function to check them and then if they match correctly then let them locked
     if( checkedCards.length == 2){
         console.log("set time out")
-        setTimeout(isMatch, 1000)
+        setTimeout(isMatch, 500)
         
         // setInterval(isMatch, 1);
 
@@ -136,13 +144,17 @@ function isMatch(){
 
     } // if click on two images with the same photo (...src value....)
     else if( checkedCards[0] === checkedCards[1] ){
-            cards[checkedCardId[0]].src = 'images/e.jpg';
-            cards[checkedCardId[1]].src = 'images/e.jpg';
+            cards[checkedCardId[0]].src = 'images/end.jpg';
+            cards[checkedCardId[1]].src = 'images/end.jpg';
 
             // if cards match correctly then let them locked (not abel to clicked)
-            cards[checkedCardId[0]].disabled = true;
-            cards[checkedCardId[1]].disabled = true;
+            // cards[checkedCardId[0]].disabled = true;
+            // cards[checkedCardId[1]].disabled = true;
+            cards[checkedCardId[0]].removeEventListener('onclick', flipCard)
+            cards[checkedCardId[1]].removeEventListener('onclick', flipCard)
+            console.log("checkedCards",checkedCards)
             cardsWon.push(checkedCards)
+
     }else {
         cards[checkedCardId[0]].src = 'images/genie.png';
         cards[checkedCardId[1]].src = 'images/genie.png';
@@ -150,6 +162,10 @@ function isMatch(){
     }
     checkedCards = [];
     checkedCardId = [];
+    score.textContent = cardsWon.length
+    if( cardsWon.length === cardArr.length/2){
+        console.log("done you are win");
+    }
     
 
 }
