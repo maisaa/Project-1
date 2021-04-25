@@ -98,7 +98,7 @@ function crateGameStage() {
     
 }
 //timer 
-let time = 100
+let time = 10
 const downlodeTimer = setInterval(() => {
     if(time === 0 ){
         clearInterval(downlodeTimer);
@@ -126,7 +126,7 @@ function flipCard(){
     // if checkedCards have two element then call isMatch function to check them and then if they match correctly then let them locked
     if( checkedCards.length == 2){
         console.log("set time out")
-        setTimeout(isMatch, 500)
+        setTimeout(isMatch, 200)
         
         // setInterval(isMatch, 1);
 

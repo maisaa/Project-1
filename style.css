@@ -50,6 +50,7 @@ html {
     grid-template-columns: repeat(4, auto);
     grid-gap: 2em;
     justify-content: center ;
+    padding-bottom: 3%;
     /* display: flex;
     flex-wrap: wrap;
     margin: 120px auto; */
