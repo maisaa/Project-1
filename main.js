@@ -71,7 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
     ]
 
 // add here new variables and functions
-
+let moves = document.querySelector('#moves')
+let timer = document.querySelector('#timer')
 const game = document.querySelector('#game')
 
 // add two arrays  one for checked Cards and the second one for won Cards 
@@ -87,27 +88,31 @@ function crateGameStage() {
         card.height = 150
         card.width = 150
         card.id = i
-        // console.log("i = ",i)
         game.appendChild(card)
         card.onclick = flipCard
     });
-    console.log("function crateGameStage")
+    //count player moves ++1 foreach click
+    moves.innerHTML = 0;
+    timer.innerHTML = downloadTimer;
+    
 }
+
+let downloadTimer = setInterval(function(){
+    if(timer.innerHTML <= 0){
+        clearInterval(downloadTimer);
+    }
+    document.getElementById("timer").value = 100 - timer.innerHTML;
+    timer.innerHTML =Number(timer.innerHTML)- 1;
+}, 10000);
 // now function to flip the cards
-// console.log("this :" ,this)
 function flipCard(){
-    // console.log("flip function")
     let cardId = this.getAttribute('id')
-    // console.log("cardId= ",cardId)
     checkedCards.push(cardArr[cardId].image)
     checkedCardId.push(cardId)
-    console.log("cardArr[cardId].image=",cardArr[cardId].src)
-    // this.setAttribute('src',cardArr[cardId].src )
-    this.src = cardArr[cardId].src
-    
-    // console.log("this.src",this.src)
-    console.log("checkedCards",checkedCards)
-    console.log("checkedCardId",checkedCardId);
+    // console.log("cardArr[cardId].image=",cardArr[cardId].src)
+    this.src = cardArr[cardId].src;
+    // console.log("checkedCards",checkedCards)
+    // console.log("checkedCardId",checkedCardId);
 
 
     // if checkedCards have two element then call isMatch function to check them and then if they match correctly then let them locked
@@ -118,19 +123,16 @@ function flipCard(){
         // setInterval(isMatch, 1);
 
     }
+    moves.innerHTML++;
 }
 //function match cards
 function isMatch(){
-    // console.log("hii match")
     let cards = document.querySelectorAll('img')
-
     // If double click on the same image with same (...Id...)
     if( checkedCardId[0] === checkedCardId[1] ){
-        console.log(".............")
-
         cards[checkedCardId[0]].src = 'images/genie.png';
         cards[checkedCardId[1]].src = 'images/genie.png';
-        alert('mmmmm')
+        // alert('you select the same card')
 
     } // if click on two images with the same photo (...src value....)
     else if( checkedCards[0] === checkedCards[1] ){
@@ -138,9 +140,6 @@ function isMatch(){
             cards[checkedCardId[1]].src = 'images/e.jpg';
 
             // if cards match correctly then let them locked (not abel to clicked)
-            // cards[checkedCardId[0]].removeEventListener('onclick', flipCard)//.disabled = true;
-            // cards[checkedCardId[1]].removeEventListener('onclick', flipCard)
-
             cards[checkedCardId[0]].disabled = true;
             cards[checkedCardId[1]].disabled = true;
             cardsWon.push(checkedCards)
@@ -159,5 +158,4 @@ cardArr.sort( () => 0.3 -Math.random())
 crateGameStage()
 })
 
-console.log("hi main.js")
 
