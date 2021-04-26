@@ -82,8 +82,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const cardsWon = []
     let checkedCards = []
     let checkedCardId = []
+    
     // crate the game stage
-
     function crateGameStage() {
         cardArr.forEach((el, i) => {
             let card = document.createElement('img')
@@ -93,23 +93,18 @@ document.addEventListener('DOMContentLoaded', () => {
             card.id = i
             game.appendChild(card)
             card.onclick = flipCard
-            // play.addEventListener('onclick', function() {
-            //     console.log("playyyy");
-            //     audio.muted = false;
-            // });
         });
         //count player moves ++1 foreach click
         moves.innerHTML = 0;
         timer.innerHTML = time + ' sec';
-
-
     }
+
     //timer 
     let time = 60
     const downlodeTimer = setInterval(() => {
         if (time === 0) {
             clearInterval(downlodeTimer);
-            audio.muted = true;
+            audio.muted = true
             return timer.innerHTML = "Game Over"
 
         } else {
@@ -121,26 +116,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // now function to flip the cards
     function flipCard() {
-
         let cardId = this.getAttribute('id')
         checkedCards.push(cardArr[cardId].image)
         checkedCardId.push(cardId)
-        // console.log("cardArr[cardId].image=",cardArr[cardId].src)
         this.src = cardArr[cardId].src;
-        // console.log("checkedCards",checkedCards)
-        // console.log("checkedCardId",checkedCardId);
-
-
         // if checkedCards have two element then call isMatch function to check them and then if they match correctly then let them locked
         if (checkedCards.length == 2) {
-            // console.log("set time out")
             setTimeout(isMatch, 200)
-
-            // setInterval(isMatch, 1);
-
         }
         moves.innerHTML++;
     }
+
     //function match cards
     function isMatch() {
         let cards = document.querySelectorAll('img')
@@ -148,36 +134,30 @@ document.addEventListener('DOMContentLoaded', () => {
         if (checkedCardId[0] === checkedCardId[1]) {
             cards[checkedCardId[0]].src = 'images/genie.png';
             cards[checkedCardId[1]].src = 'images/genie.png';
-            // alert('you select the same card')
-
         } // if click on two images with the same photo (...src value....)
         else if (checkedCards[0] === checkedCards[1]) {
             cards[checkedCardId[0]].src = 'images/end.jpg';
             cards[checkedCardId[1]].src = 'images/end.jpg';
             // if cards match correctly then let them locked (not abel to clicked)
-            // cards[checkedCardId[0]].disabled = true;
-            // cards[checkedCardId[1]].disabled = true;
             cards[checkedCardId[0]].removeEventListener('onclick', flipCard)
             cards[checkedCardId[1]].removeEventListener('onclick', flipCard)
             console.log("checkedCards", checkedCards)
             cardsWon.push(checkedCards)
-
         } else {
             cards[checkedCardId[0]].src = 'images/genie.png';
             cards[checkedCardId[1]].src = 'images/genie.png';
-
         }
         checkedCards = [];
         checkedCardId = [];
         score.textContent = cardsWon.length
         if (cardsWon.length === cardArr.length / 2 && time > 0) {
+            audio.muted = true
             alert("You are Win");
+            window.location.reload();
         } else if (cardsWon.length === cardArr.length / 2 && time <= 0) {
             alert("Game Over")
-
+            window.location.reload();
         }
-
-
     }
 
     //randomly sort an array of Cards
