@@ -10,9 +10,17 @@
   <body>
     <header id="title">
       <h1>Memory Card Game</h1>
-      <button style="width: 40px;" id="play" type="button" onClick="refreshPage()">start</button>
-      <button style="width: 80px;" class="play-sound-btn" type="button">play sound</button>
-    
+      <button
+        style="width: 40px"
+        id="play"
+        type="button"
+        onClick="refreshPage()"
+      >
+        start
+      </button>
+      <button style="width: 80px" class="play-sound-btn" type="button">
+        play sound
+      </button>
     </header>
     <div class="game-container">
       <!-- game-info div for the user name and score and button play  -->
@@ -33,15 +41,15 @@
 
     <footer>maisaa.alkhedr (2021)</footer>
     <script>
-      function refreshPage(){
-          window.location.reload();
-          const soundBtn =document.querySelector('.play-sound-btn')
-          let myAudio =document.querySelector('#audio');
-          soundBtn.addEventListener('click', () => {
-            myAudio.play();
-          })
-      } 
-      </script>
+      function refreshPage() {
+        window.location.reload();
+        const soundBtn = document.querySelector(".play-sound-btn");
+        let myAudio = document.querySelector("#audio");
+        soundBtn.addEventListener("click", () => {
+          myAudio.play();
+        });
+      }
+    </script>
 
     <script src="./main.js"></script>
   </body>

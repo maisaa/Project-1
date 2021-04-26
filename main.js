@@ -70,120 +70,119 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     ]
 
-// add here new variables and functions
-let moves = document.querySelector('#moves')
-let timer = document.querySelector('#timer')
-let score = document.querySelector('#score')
-const game = document.querySelector('#game')
-const audio = document.querySelector("audio");
-const play = document.querySelector("#play")
+    // add here new variables and functions
+    let moves = document.querySelector('#moves')
+    let timer = document.querySelector('#timer')
+    let score = document.querySelector('#score')
+    const game = document.querySelector('#game')
+    const audio = document.querySelector("audio");
+    const play = document.querySelector("#play")
 
-// add two arrays  one for checked Cards and the second one for won Cards 
-const cardsWon = []
-let checkedCards = []
-let checkedCardId = []
-// crate the game stage
+    // add two arrays  one for checked Cards and the second one for won Cards 
+    const cardsWon = []
+    let checkedCards = []
+    let checkedCardId = []
+    // crate the game stage
 
-function crateGameStage() {
-    cardArr.forEach( (el , i) => {
-        let card = document.createElement('img')
-        card.src = 'images/genie.png'
-        card.height = 150
-        card.width = 150
-        card.id = i
-        game.appendChild(card)
-        card.onclick = flipCard
-        // play.addEventListener('onclick', function() {
-        //     console.log("playyyy");
-        //     audio.muted = false;
-        // });
-    });
-    //count player moves ++1 foreach click
-    moves.innerHTML = 0;
-    timer.innerHTML = time +' sec';
-    
-    
-}
-//timer 
-let time = 60
-const downlodeTimer = setInterval(() => {
-    if(time === 0 ){
-        clearInterval(downlodeTimer);
-        return timer.innerHTML ="Game Over" 
-        
-    }else {
-        time = time
-    }
-    time--;
-    timer.innerHTML = time +' sec'
-}, 1000);
+    function crateGameStage() {
+        cardArr.forEach((el, i) => {
+            let card = document.createElement('img')
+            card.src = 'images/genie.png'
+            card.height = 150
+            card.width = 150
+            card.id = i
+            game.appendChild(card)
+            card.onclick = flipCard
+            // play.addEventListener('onclick', function() {
+            //     console.log("playyyy");
+            //     audio.muted = false;
+            // });
+        });
+        //count player moves ++1 foreach click
+        moves.innerHTML = 0;
+        timer.innerHTML = time + ' sec';
 
-// now function to flip the cards
-function flipCard(){
-    
-    let cardId = this.getAttribute('id')
-    checkedCards.push(cardArr[cardId].image)
-    checkedCardId.push(cardId)
-    // console.log("cardArr[cardId].image=",cardArr[cardId].src)
-    this.src = cardArr[cardId].src;
-    // console.log("checkedCards",checkedCards)
-    // console.log("checkedCardId",checkedCardId);
-
-
-    // if checkedCards have two element then call isMatch function to check them and then if they match correctly then let them locked
-    if( checkedCards.length == 2){
-        // console.log("set time out")
-        setTimeout(isMatch, 200)
-        
-        // setInterval(isMatch, 1);
 
     }
-    moves.innerHTML++;
-}
-//function match cards
-function isMatch(){
-    let cards = document.querySelectorAll('img')
-    // If double click on the same image with same (...Id...)
-    if( checkedCardId[0] === checkedCardId[1] ){
-        cards[checkedCardId[0]].src = 'images/genie.png';
-        cards[checkedCardId[1]].src = 'images/genie.png';
-        // alert('you select the same card')
+    //timer 
+    let time = 60
+    const downlodeTimer = setInterval(() => {
+        if (time === 0) {
+            clearInterval(downlodeTimer);
+            return timer.innerHTML = "Game Over"
 
-    } // if click on two images with the same photo (...src value....)
-    else if( checkedCards[0] === checkedCards[1] ){
+        } else {
+            time = time
+        }
+        time--;
+        timer.innerHTML = time + ' sec'
+    }, 1000);
+
+    // now function to flip the cards
+    function flipCard() {
+
+        let cardId = this.getAttribute('id')
+        checkedCards.push(cardArr[cardId].image)
+        checkedCardId.push(cardId)
+        // console.log("cardArr[cardId].image=",cardArr[cardId].src)
+        this.src = cardArr[cardId].src;
+        // console.log("checkedCards",checkedCards)
+        // console.log("checkedCardId",checkedCardId);
+
+
+        // if checkedCards have two element then call isMatch function to check them and then if they match correctly then let them locked
+        if (checkedCards.length == 2) {
+            // console.log("set time out")
+            setTimeout(isMatch, 200)
+
+            // setInterval(isMatch, 1);
+
+        }
+        moves.innerHTML++;
+    }
+    //function match cards
+    function isMatch() {
+        let cards = document.querySelectorAll('img')
+        // If double click on the same image with same (...Id...)
+        if (checkedCardId[0] === checkedCardId[1]) {
+            cards[checkedCardId[0]].src = 'images/genie.png';
+            cards[checkedCardId[1]].src = 'images/genie.png';
+            // alert('you select the same card')
+
+        } // if click on two images with the same photo (...src value....)
+        else if (checkedCards[0] === checkedCards[1]) {
             cards[checkedCardId[0]].src = 'images/end.jpg';
             cards[checkedCardId[1]].src = 'images/end.jpg';
-
             // if cards match correctly then let them locked (not abel to clicked)
             // cards[checkedCardId[0]].disabled = true;
             // cards[checkedCardId[1]].disabled = true;
             cards[checkedCardId[0]].removeEventListener('onclick', flipCard)
             cards[checkedCardId[1]].removeEventListener('onclick', flipCard)
-            console.log("checkedCards",checkedCards)
+            console.log("checkedCards", checkedCards)
             cardsWon.push(checkedCards)
 
-    }else {
-        cards[checkedCardId[0]].src = 'images/genie.png';
-        cards[checkedCardId[1]].src = 'images/genie.png';
-        
+        } else {
+            cards[checkedCardId[0]].src = 'images/genie.png';
+            cards[checkedCardId[1]].src = 'images/genie.png';
+
+        }
+        checkedCards = [];
+        checkedCardId = [];
+        score.textContent = cardsWon.length
+        if (cardsWon.length === cardArr.length / 2 && time > 0) {
+            alert("You are Win");
+        } else if (cardsWon.length === cardArr.length / 2 && time <= 0) {
+            alert("Game Over")
+
+        }
+
+
     }
-    checkedCards = [];
-    checkedCardId = [];
-    score.textContent = cardsWon.length
-    if( cardsWon.length === cardArr.length/2 && time > 0){
-        alert("You are Win");
-    }else if(cardsWon.length === cardArr.length/2 && time <= 0 ){
-        alert("Game Over")
-        
-    }
-    
 
-}
+    //randomly sort an array of Cards
+    cardArr.sort(() => 0.5 - Math.random())
 
-//randomly sort an array of Cards
-cardArr.sort( () => 0.5 - Math.random())
-
-crateGameStage()
+    crateGameStage()
 })
 
 
