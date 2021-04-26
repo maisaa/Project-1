@@ -22,38 +22,40 @@ html {
 
 .game-container{
     position: relative;
-    padding-top: 5%;
+    /* padding-top: 5%; */
     padding-left: 5%;
     display: grid;
     width: 100%;
     grid-template-columns: 1fr;
     grid-gap: 4em;
+    justify-content: center ;
 }
 
 .game-info{
     grid-row: 2fr;
     display: flex;
-    justify-content: space-between; 
-    padding-right: 10%;
+    justify-content: center ; 
+    column-gap: inherit;
+}
+
+.play {
+     
 }
 
 .info{
     color: khaki;
     font-size: 2em;
+    justify-content: center ;
 }
 
 
 #game{ 
-    /* position: relative; */
     display: grid;
-    /* width: 1%; */
+    padding-left: 16%;
     grid-template-columns: repeat(4, auto);
     grid-gap: 2em;
     justify-content: center ;
     padding-bottom: 3%;
-    /* display: flex;
-    flex-wrap: wrap;
-    margin: 120px auto; */
 }
 
 
@@ -63,6 +65,7 @@ img {
     grid-area: auto;
     border-radius: 20px ;
     margin: auto;
+    transform: translateX(-100%) rotateY(-180deg);
 }
 
 footer{

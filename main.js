@@ -75,6 +75,8 @@ let moves = document.querySelector('#moves')
 let timer = document.querySelector('#timer')
 let score = document.querySelector('#score')
 const game = document.querySelector('#game')
+const audio = document.querySelector("audio");
+const play = document.querySelector("#play")
 
 // add two arrays  one for checked Cards and the second one for won Cards 
 const cardsWon = []
@@ -91,18 +93,23 @@ function crateGameStage() {
         card.id = i
         game.appendChild(card)
         card.onclick = flipCard
+        // play.addEventListener('onclick', function() {
+        //     console.log("playyyy");
+        //     audio.muted = false;
+        // });
     });
     //count player moves ++1 foreach click
     moves.innerHTML = 0;
-    timer.innerHTML = 100;
+    timer.innerHTML = time +' sec';
+    
     
 }
 //timer 
-let time = 10
+let time = 60
 const downlodeTimer = setInterval(() => {
     if(time === 0 ){
         clearInterval(downlodeTimer);
-        return timer.innerHTML ="Game Over"
+        return timer.innerHTML ="Game Over" 
         
     }else {
         time = time
@@ -111,9 +118,9 @@ const downlodeTimer = setInterval(() => {
     timer.innerHTML = time +' sec'
 }, 1000);
 
-
 // now function to flip the cards
 function flipCard(){
+    
     let cardId = this.getAttribute('id')
     checkedCards.push(cardArr[cardId].image)
     checkedCardId.push(cardId)
@@ -125,7 +132,7 @@ function flipCard(){
 
     // if checkedCards have two element then call isMatch function to check them and then if they match correctly then let them locked
     if( checkedCards.length == 2){
-        console.log("set time out")
+        // console.log("set time out")
         setTimeout(isMatch, 200)
         
         // setInterval(isMatch, 1);
@@ -163,13 +170,18 @@ function isMatch(){
     checkedCards = [];
     checkedCardId = [];
     score.textContent = cardsWon.length
-    if( cardsWon.length === cardArr.length/2){
-        console.log("done you are win");
+    if( cardsWon.length === cardArr.length/2 && time > 0){
+        alert("You are Win");
+    }else if(cardsWon.length === cardArr.length/2 && time <= 0 ){
+        alert("Game Over")
+        
     }
     
 
 }
-cardArr.sort( () => 0.3 -Math.random())
+
+//randomly sort an array of Cards
+cardArr.sort( () => 0.5 - Math.random())
 
 crateGameStage()
 })

@@ -10,47 +10,38 @@
   <body>
     <header id="title">
       <h1>Memory Card Game</h1>
+      <button style="width: 40px;" id="play" type="button" onClick="refreshPage()">start</button>
+      <button style="width: 80px;" class="play-sound-btn" type="button">play sound</button>
+    
     </header>
     <div class="game-container">
-      <!-- First div for the user name and score and button play  -->
+      <!-- game-info div for the user name and score and button play  -->
       <div class="game-info">
         <div class="info">Time : <span id="timer">100</span></div>
         <div class="info">Moves : <span id="moves">0</span></div>
         <div class="info">Score : <span id="score">0</span></div>
+        <audio id="audio" autoplay>
+          <source src="music/01 - Arabian Nights.mp3" type="audio/mp3" />
+        </audio>
       </div>
-      <!-- sec div for the play stage -->
-    
-      <audio  autoplay>
-        <!-- <source src="music/horse.ogv" type="audio/ogg"> -->
-        <source src="music/01 - Arabian Nights.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
-      </audio>
-<!-- 
-       <embed src="music/01 - Arabian Nights.mp3"
-        allow="autoplay 'src'"> -->
-       
 
+      <!-- game div for the play stage -->
       <div id="game">
-        <!-- <img src="./images/abu.jpg" />
-        <img src="./images/abu.jpg" />
-        <img src="./images/aladdin.png" />
-        <img src="./images/aladdin.png" />
-        <img src="./images/genie1.jpg" />
-        <img src="./images/genie1.jpg" />
-        <img src="./images/j4.jpg" />
-        <img src="./images/j4.jpg" />
-        <img src="./images/retu.jpg" />
-        <img src="./images/retu.jpg" />
-        <img src="./images/Carpet.jpg" />
-        <img src="./images/Carpet.jpg" />
-        <img src="./images/sultan.jpg" />
-        <img src="./images/sultan.jpg" />
-        <img src="./images/jafar.jpg" />
-        <img src="./images/jafar.jpg" /> -->
+        <!-- create images here  -->
       </div>
     </div>
 
     <footer>maisaa.alkhedr (2021)</footer>
+    <script>
+      function refreshPage(){
+          window.location.reload();
+          const soundBtn =document.querySelector('.play-sound-btn')
+          let myAudio =document.querySelector('#audio');
+          soundBtn.addEventListener('click', () => {
+            myAudio.play();
+          })
+      } 
+      </script>
 
     <script src="./main.js"></script>
   </body>
