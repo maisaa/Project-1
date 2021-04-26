@@ -109,6 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const downlodeTimer = setInterval(() => {
         if (time === 0) {
             clearInterval(downlodeTimer);
+            audio.muted = true;
             return timer.innerHTML = "Game Over"
 
         } else {
